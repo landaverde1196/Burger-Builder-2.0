@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Layout from "./hoc/Layout/Layout";
 //import BurgerBuilder from "./containers/BurgerBuilder/BurgerBuilder";
-import Logout from "./containers/Auth/Logout/Logout";
+// import Logout from "./containers/Auth/Logout/Logout";
 import Auth from "./containers/Auth/Auth";
 import * as actions from "./store/actions/index";
 
@@ -47,7 +47,7 @@ const App = (props) => {
       <Switch>
         <Route path="/checkout" render={(props) => <Checkout {...props} />} />
         <Route path="/orders" render={(props) => <Orders {...props} />} />
-        <Route path="/logout" component={Logout} />
+        {/* <Route path="/logout" component={Logout} /> */}
         <Route path="/burger" render={(props) => <Burger {...props} />} />
         <Route path="/" exact component={Auth} />
         <Redirect to="/" />
