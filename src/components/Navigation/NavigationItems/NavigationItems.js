@@ -2,20 +2,20 @@ import React from "react";
 import classes from "./NavigationItems.module.css";
 import NavigationItem from "./NavigationItem/NavigationItem";
 
-const navigationItems = (props) => (
-  <ul className={classes.NavigationItems}>
-    <NavigationItem link="/" exact>
-      Authenticate
-    </NavigationItem>
-    {props.isAuthenticated ? (
-      <NavigationItem link="/orders">Orders</NavigationItem>
-    ) : null}
-    {!props.isAuthenticated ? (
-      <NavigationItem link="/burger">Burger</NavigationItem>
-    ) : (
-      <NavigationItem link="/logout">Logout</NavigationItem>
-    )}
-  </ul>
-);
+import { useAuth0 } from "@auth0/auth0-react";
 
-export default navigationItems;
+const NavigationItems = (props) => {
+  const { isAuthenticated } = useAuth0();
+
+  return isAuthenticated ? (
+    <ul className={classes.NavigationItems}>
+      <NavigationItem link="/burger">Burger</NavigationItem>
+      <NavigationItem link="/orders">Orders</NavigationItem>
+      <NavigationItem link="/" exact>
+        Log Out
+      </NavigationItem>
+    </ul>
+  ) : null;
+};
+
+export default NavigationItems;
